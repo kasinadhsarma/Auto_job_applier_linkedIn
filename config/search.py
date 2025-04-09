@@ -16,8 +16,56 @@ version:    24.12.29.12.30
 ###################################################### LINKEDIN SEARCH PREFERENCES ######################################################
 
 # These Sentences are Searched in LinkedIn
-# Enter your search terms inside '[ ]' with quotes ' "searching title" ' for each search followed by comma ', ' Eg: ["Software Engineer", "Software Developer", "Selenium Developer"]
-search_terms = ["Software Engineer", "Software Developer", "Python Developer", "Selenium Developer", "React Developer", "Front End Developer", "Full Stack Developer", "Web Developer", "Nodejs Developer"]
+search_terms = [
+    # Core Software Engineering Roles
+    "Software Engineer", 
+    "Software Developer",
+    "Backend Engineer",
+    "Frontend Engineer",
+    "Full Stack Engineer",
+    
+    # Specialized Engineering Roles
+    "Python Developer",
+    "React Developer",
+    "Node.js Developer",
+    "Java Developer",
+    "Cloud Engineer",
+    "DevOps Engineer",
+    "Site Reliability Engineer",
+    
+    # AI/ML Roles
+    "Machine Learning Engineer",
+    "Data Scientist",
+    "AI Engineer",
+    "Deep Learning Engineer",
+    "NLP Engineer",
+    
+    # Platform/Infrastructure Roles
+    "Platform Engineer",
+    "Infrastructure Engineer",
+    "Systems Engineer",
+    "Security Engineer",
+    
+    # Database/Data Roles
+    "Database Engineer",
+    "Data Engineer",
+    "PostgreSQL Developer",
+    "Data Platform Engineer",
+    
+    # Cloud Platform Specific
+    "AWS Engineer",
+    "Azure Engineer",
+    "GCP Engineer",
+    "Cloud Native Engineer",
+    
+    # Modern Tech Stack
+    "Kubernetes Engineer",
+    "Docker Engineer",
+    "Microservices Engineer",
+    "API Engineer",
+    "FastAPI Developer",
+    "GraphQL Developer"
+]
 
 # Search location, this will be filled in "City, state, or zip code" search box. If left empty as "", tool will not fill it.
 search_location = "India"               # Some valid examples: "", "United States", "India", "Chicago, Illinois, United States", "90001, Los Angeles, California, United States", "Bengaluru, Karnataka, India", etc.
@@ -52,11 +100,42 @@ salary = ""                        # "$40,000+", "$60,000+", "$80,000+", "$100,0
 
 easy_apply_only = True             # True or False, Note: True or False are case-sensitive
 
-experience_level = ["Entry level"]              # (multiple select) "Internship", "Entry level", "Associate", "Mid-Senior level", "Director", "Executive"
+experience_level = ["Internship", "Entry level"]  # Restrict to fresher roles only
 job_type = ["Full-time","Part-time"]                      # (multiple select) "Full-time", "Part-time", "Contract", "Temporary", "Volunteer", "Internship", "Other"
 on_site = ["Remote", "On-site","Hybrid"]                       # (multiple select) "On-site", "Remote", "Hybrid"
 
-companies = []                     # (dynamic multiple select) make sure the name you type in list exactly matches with the company name you're looking for, including capitals. 
+companies = [
+    "Google",
+    "Microsoft",
+    "Amazon",
+    "Apple",
+    "Meta",
+    "Netflix",
+    "LinkedIn",
+    "Twitter",
+    "Uber",
+    "Airbnb",
+    "Stripe",
+    "Square",
+    "Atlassian",
+    "MongoDB",
+    "Databricks",
+    "Snowflake",
+    "Adobe",
+    "Intel",
+    "AMD",
+    "NVIDIA",
+    "Salesforce",
+    "Oracle",
+    "IBM",
+    "VMware",
+    "Cisco",
+    "Dell",
+    "HP",
+    "SAP",
+    "Zoom",
+    "Slack"
+]                     # (dynamic multiple select) make sure the name you type in list exactly matches with the company name you're looking for, including capitals. 
                                    # Eg: "7-eleven", "Google","X, the moonshot factory","YouTube","CapitalG","Adometry (acquired by Google)","Meta","Apple","Byte Dance","Netflix", "Snowflake","Mineral.ai","Microsoft","JP Morgan","Barclays","Visa","American Express", "Snap Inc", "JPMorgan Chase & Co.", "Tata Consultancy Services", "Recruiting from Scratch", "Epic", and so on...
 location = []                      # (dynamic multiple select)
 industry = []                      # (dynamic multiple select)
@@ -83,13 +162,80 @@ pause_after_filters = True         # True or False, Note: True or False are case
 ## >>>>>>>>>>> SKIP IRRELEVANT JOBS <<<<<<<<<<<
  
 # Avoid applying to these companies, and companies with these bad words in their 'About Company' section...
-about_company_bad_words = ["Crossover"]       # (dynamic multiple search) or leave empty as []. Ex: ["Staffing", "Recruiting", "Name of Company you don't want to apply to"]
+about_company_bad_words = [
+    "Staffing",
+    "Recruiting",
+    "Recruitment",
+    "Talent Acquisition",
+    "Consulting Services",
+    "Placement",
+    "Contract Staffing",
+    "Employment Agency",
+    "Workforce Solutions",
+    "Temp Agency",
+    "Personnel Agency",
+    "Job Agency",
+    "Manpower",
+    "Third Party Recruiter"
+]       # (dynamic multiple search) or leave empty as []. Ex: ["Staffing", "Recruiting", "Name of Company you don't want to apply to"]
 
 # Skip checking for `about_company_bad_words` for these companies if they have these good words in their 'About Company' section... [Exceptions, For example, I want to apply to "Robert Half" although it's a staffing company]
-about_company_good_words = []      # (dynamic multiple search) or leave empty as []. Ex: ["Robert Half", "Dice"]
+about_company_good_words = [
+    "AI",
+    "Machine Learning",
+    "Cloud Native",
+    "Microservices",
+    "DevOps",
+    "Agile",
+    "Remote-first",
+    "Deep Learning",
+    "Kubernetes",
+    "Docker",
+    "Distributed Systems",
+    "Open Source",
+    "Innovation",
+    "Tech-driven",
+    "Data-driven"
+]      # (dynamic multiple search) or leave empty as []. Ex: ["Robert Half", "Dice"]
 
 # Avoid applying to these companies if they have these bad words in their 'Job Description' section...  (In development)
-bad_words = ["US Citizen","USA Citizen","No C2C", "No Corp2Corp", ".NET", "Embedded Programming", "PHP", "Ruby", "CNC"]                     # (dynamic multiple search) or leave empty as []. Case Insensitive. Ex: ["word_1", "phrase 1", "word word", "polygraph", "US Citizenship", "Security Clearance"]
+bad_words = [
+    # Experience level filters
+    "Senior Principal",
+    "Principal Engineer",
+    "Staff Engineer", 
+    "Distinguished Engineer",
+    "10+ years",
+    "15+ years",
+    "20+ years",
+    
+    # Citizenship/Visa requirements
+    "US Citizen",
+    "US Citizenship required",
+    "No visa sponsorship",
+    "No H1B",
+    "Citizens only",
+    
+    # Contract/Consulting filters
+    "C2C",
+    "Corp to Corp",
+    "1099",
+    "Contract only",
+    "No W2",
+    
+    # Location/Remote restrictions
+    "No remote",
+    "On-site only",
+    "Must be located in",
+    "Local candidates only",
+    
+    # Security clearance
+    "Security clearance required",
+    "Clearance required",
+    "Must have active clearance",
+    "Secret clearance",
+    "Top secret"
+]                     # (dynamic multiple search) or leave empty as []. Case Insensitive. Ex: ["word_1", "phrase 1", "word word", "polygraph", "US Citizenship", "Security Clearance"]
 
 # Do you have an active Security Clearance? (True for Yes and False for No)
 security_clearance = False         # True or False, Note: True or False are case-sensitive

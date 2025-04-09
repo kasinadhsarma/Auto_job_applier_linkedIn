@@ -1,0 +1,33 @@
+'''
+Configuration file for personal information used in job applications
+'''
+
+# Your full name details
+first_name = "John"
+middle_name = ""  # Leave empty if none
+last_name = "Doe"
+
+# Contact information
+phone_number = "+1234567890"
+email = "john.doe@example.com"
+
+# Location details
+street = "123 Main St"
+city = "San Francisco" 
+state = "California"
+country = "United States"
+zipcode = "94105"
+current_city = "San Francisco, California"  # City name as shown on job postings
+
+# Professional information
+education_level = "Bachelor's Degree"  # Your highest completed education
+current_company = "Tech Corp"
+linkedin_headline = "Software Engineer | Full Stack Developer | Python Expert"
+portfolio_url = "https://github.com/johndoe"
+linkedIn = "https://www.linkedin.com/in/johndoe"
+website = "https://johndoe.dev"  # Personal website or portfolio
+
+# Demographic information (optional)
+gender = "Prefer not to say"  # Options: "Male", "Female", "Other", "Prefer not to say"
+veteran_status = "No"
+disability_status = "No"

@@ -11,25 +11,25 @@ GitHub:     https://github.com/GodsScion/Auto_job_applier_linkedIn
 
 '''
 
-# Check if Python is installed
-while (-not (python -V)) {
-    Write-Host "Python is not installed or not accessible!"
-    Write-Host "Please install Python and make sure it is added to your system's PATH environment variable."
-    Write-Host "Hold Ctrl and click on the link below or search 'Python Download' in your browser."
-    Write-Host "https://www.python.org/downloads/"
-    Write-Host "After installing Python and adding it to PATH, press Enter to continue."
-    Read-Host -Prompt ""
+# PowerShell setup script for Auto Job Applier
+
+Write-Host "Setting up Auto Job Applier..."
+
+# Check Python installation
+try {
+    $pythonVersion = python --version
+    Write-Host "Found Python: $pythonVersion"
+} catch {
+    Write-Host "Python is not installed or not in PATH"
+    Write-Host "Please install Python from https://www.python.org/downloads/"
+    Write-Host "Make sure to check 'Add Python to PATH' during installation"
+    exit 1
 }
 
-Write-Host "Python is installed."
-
-
-
-# Check if Google Chrome is installed
-while (-not (Test-Path -Path "C:\Program Files\Google\Chrome\Application\chrome.exe")) {
-    # Prompt user to install Google Chrome
-    Write-Host "Google Chrome is not installed or not installed in the default location."
-    Write-Host "Please make sure to install it before proceeding."
+# Create virtual environment
+Write-Host "Creating virtual environment..."
+python -m venv venv
+./venv/Scripts/Activate.ps1
     Write-Host "Please install Google Chrome to continue..."
     Write-Host "Hold Ctrl and click on the link below or manually open a browser and search 'Google Chrome Download'."
     Write-Host "https://www.google.com/chrome/"

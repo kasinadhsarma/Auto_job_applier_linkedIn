@@ -1,0 +1,61 @@
+'''
+Configuration file for common job application questions and answers
+'''
+
+# Resume settings
+default_resume_path = "all resumes/default/resume.pdf"  # Path to your default resume
+
+# Work preferences
+years_of_experience = "5"  # Total years of professional experience
+desired_salary = 120000  # Annual salary in USD
+current_ctc = 100000  # Current annual compensation in USD
+notice_period = 30  # Notice period in days
+
+# Visa and work authorization
+require_visa = "No"  # Do you require visa sponsorship?
+us_citizenship = "Yes"  # Are you a US citizen or authorized to work in the US?
+
+# Application text responses
+linkedin_summary = """
+Experienced software engineer with 5 years of expertise in full-stack development.
+Strong background in Python, JavaScript, and cloud technologies.
+Proven track record of delivering scalable solutions and leading technical projects.
+"""
+
+cover_letter = """
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the [Position] role at [Company].
+With my experience in software development and track record of delivering results,
+I believe I would be a valuable addition to your team.
+
+[Customize this section based on the specific role and company]
+
+Thank you for considering my application.
+
+Best regards,
+[Your name]
+"""
+
+# Application behavior settings
+overwrite_previous_answers = True  # Whether to overwrite previously filled answers
+pause_at_failed_question = True  # Pause for manual intervention if a question can't be answered
+pause_before_submit = True  # Pause for review before submitting application
+
+# Job filtering settings
+skip_clearance_jobs = True  # Skip jobs requiring security clearance
+follow_companies = True  # Follow companies after applying
+
+# Company blacklist settings
+about_company_bad_words = [
+    "staffing",
+    "recruiting",
+    "outsourcing",
+    "consulting services"
+]
+
+about_company_good_words = [
+    "fortune 500",
+    "tech giant",
+    "industry leader"
+]

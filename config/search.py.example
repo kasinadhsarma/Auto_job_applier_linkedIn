@@ -1,0 +1,84 @@
+'''
+Configuration file for job search preferences across platforms
+'''
+
+# Search terms for job titles
+search_terms = [
+    "Software Engineer",
+    "Python Developer",
+    "Full Stack Developer",
+    "Backend Engineer"
+]
+
+# Location preferences
+search_location = "United States"  # Leave empty for all locations
+
+# Experience level filters
+experience_level = [
+    "Entry level",
+    "Associate",
+    "Mid-Senior level"
+]
+
+# Job type preferences
+job_type = [
+    "Full-time",
+    "Remote"
+]
+
+# Workplace type
+on_site = [
+    "Remote",
+    "Hybrid"
+]
+
+# Industry preferences
+industry = [
+    "Software Development",
+    "Information Technology",
+    "Computer Software"
+]
+
+# Function preferences
+job_function = [
+    "Engineering",
+    "Information Technology"
+]
+
+# Application settings
+easy_apply_only = True  # Only show jobs with easy apply
+run_non_stop = False  # Continuously search and apply
+randomize_search_order = True  # Randomize order of search terms
+
+# Search result sorting
+sort_by = "Most recent"  # Options: "Most recent", "Most relevant"
+date_posted = "Past 24 hours"  # Options: "Any time", "Past month", "Past week", "Past 24 hours"
+
+# Filter cycling settings
+cycle_date_posted = True  # Cycle through different date ranges
+stop_date_cycle_at_24hr = True  # Stop cycling at "Past 24 hours"
+alternate_sortby = True  # Alternate between "Most recent" and "Most relevant"
+
+# Application limits
+switch_number = 25  # Number of jobs to apply before switching search terms
+
+# Optional filters
+under_10_applicants = False  # Only show jobs with under 10 applicants
+in_your_network = False  # Only show jobs where you have connections
+fair_chance_employer = False  # Only show jobs from fair chance employers
+
+# Company preferences
+companies = []  # List of preferred companies to filter by
+
+# Benefits preferences
+benefits = [
+    "Remote work",
+    "Flexible schedule",
+    "Health insurance",
+    "401(k)"
+]
+
+# Additional filters
+salary = "100,000+"  # Minimum salary requirement
+job_titles = []  # Specific job titles to filter by
+commitments = []  # Specific commitments to filter by (e.g., "Contract", "Permanent")

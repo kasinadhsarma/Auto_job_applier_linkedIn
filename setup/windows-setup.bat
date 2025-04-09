@@ -106,9 +106,68 @@ start "" "%chromedriver_dir%\chromedriver.exe"
 :: pip install setuptools
 :: pip install pyautogui
 
+@echo off
+echo Setting up Auto Job Applier...
 
+:: Check Python installation
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo Python is not installed or not in PATH
+    echo Please install Python from https://www.python.org/downloads/
+    echo Make sure to check "Add Python to PATH" during installation
+    pause
+    exit /b 1
+)
 
+:: Create virtual environment
+python -m venv venv
+call venv\Scripts\activate.bat
 
+:: Install requirements
+pip install -r requirements.txt
+
+:: Create directories
+mkdir "all resumes\default" 2>nul
+mkdir "all resumes\temp" 2>nul
+mkdir "all excels" 2>nul
+mkdir "logs\screenshots" 2>nul
+
+:: Copy example configs if needed
+if not exist "config\secrets.py" (
+    copy "config\secrets.py.example" "config\secrets.py"
+    echo Created config/secrets.py - Please edit with your credentials
+)
+
+if not exist "config\personals.py" (
+    copy "config\personals.py.example" "config\personals.py"
+    echo Created config/personals.py - Please edit with your personal information
+)
+
+:: Download latest ChromeDriver
+powershell -Command "& {
+    $json = Invoke-RestMethod -Uri 'https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json'
+    $downloadUrl = $json.channels.Stable.downloads.chromedriver | Where-Object {$_.platform -eq 'win64'} | Select-Object -ExpandProperty url
+    
+    Write-Host 'Downloading ChromeDriver...'
+    Invoke-WebRequest -Uri $downloadUrl -OutFile 'chromedriver.zip'
+    
+    Write-Host 'Extracting ChromeDriver...'
+    Expand-Archive -Path 'chromedriver.zip' -DestinationPath 'temp' -Force
+    
+    $chromePath = 'C:\Program Files\Google\Chrome'
+    if (!(Test-Path $chromePath)) {
+        New-Item -ItemType Directory -Path $chromePath -Force
+    }
+    
+    Move-Item -Path 'temp\chromedriver-win64\chromedriver.exe' -Destination $chromePath -Force
+    Remove-Item -Path 'chromedriver.zip' -Force
+    Remove-Item -Path 'temp' -Recurse -Force
+}"
+
+echo Setup complete! Please configure your settings in the config directory.
+echo Place your default resume in 'all resumes\default' directory.
+echo Run 'venv\Scripts\activate.bat' to activate virtual environment before running the bot.
+pause
 
 :ExitSetup
 pause

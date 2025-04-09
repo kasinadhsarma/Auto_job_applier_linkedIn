@@ -1,0 +1,38 @@
+'''
+Global settings for the auto job application bot
+'''
+
+# Browser and automation settings
+run_in_background = False  # Run browser in headless mode
+stealth_mode = True  # Use undetected-chromedriver to bypass anti-bot measures
+disable_extensions = True  # Disable browser extensions
+safe_mode = False  # Use a guest profile instead of default browser profile
+keep_screen_awake = True  # Prevent screen from sleeping
+
+# File paths and naming
+file_name = "all excels/applied_jobs.csv"  # Path to save successful applications
+failed_file_name = "all excels/failed_jobs.csv"  # Path to save failed applications
+logs_folder_path = "logs"  # Directory for log files
+
+# Click and wait timings
+click_gap = 2.0  # Time to wait between clicks (seconds)
+page_load_timeout = 30  # Maximum time to wait for page load (seconds)
+element_timeout = 5  # Maximum time to wait for elements (seconds)
+
+# Browser behavior
+smooth_scroll = True  # Use smooth scrolling
+close_tabs = True  # Close job application tabs after applying
+
+# Random delays to appear more human-like
+min_delay = 1.0  # Minimum delay between actions (seconds)
+max_delay = 3.0  # Maximum delay between actions (seconds)
+randomize_delays = True  # Add random delays between actions
+
+# Error handling
+retry_attempts = 3  # Number of times to retry failed actions
+error_screenshot = True  # Take screenshots on errors
+pause_after_filters = True  # Pause after applying filters for verification
+
+# Resume management
+default_resume_path = "all resumes/default"  # Path to default resumes
+generated_resume_path = "all resumes/temp"  # Path for AI-generated resumes
