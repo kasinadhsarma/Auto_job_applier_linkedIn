@@ -104,38 +104,7 @@ experience_level = ["Internship", "Entry level"]  # Restrict to fresher roles on
 job_type = ["Full-time","Part-time"]                      # (multiple select) "Full-time", "Part-time", "Contract", "Temporary", "Volunteer", "Internship", "Other"
 on_site = ["Remote", "On-site","Hybrid"]                       # (multiple select) "On-site", "Remote", "Hybrid"
 
-companies = [
-    "Google",
-    "Microsoft",
-    "Amazon",
-    "Apple",
-    "Meta",
-    "Netflix",
-    "LinkedIn",
-    "Twitter",
-    "Uber",
-    "Airbnb",
-    "Stripe",
-    "Square",
-    "Atlassian",
-    "MongoDB",
-    "Databricks",
-    "Snowflake",
-    "Adobe",
-    "Intel",
-    "AMD",
-    "NVIDIA",
-    "Salesforce",
-    "Oracle",
-    "IBM",
-    "VMware",
-    "Cisco",
-    "Dell",
-    "HP",
-    "SAP",
-    "Zoom",
-    "Slack"
-]                     # (dynamic multiple select) make sure the name you type in list exactly matches with the company name you're looking for, including capitals. 
+companies = []                     # (dynamic multiple select) make sure the name you type in list exactly matches with the company name you're looking for, including capitals. 
                                    # Eg: "7-eleven", "Google","X, the moonshot factory","YouTube","CapitalG","Adometry (acquired by Google)","Meta","Apple","Byte Dance","Netflix", "Snowflake","Mineral.ai","Microsoft","JP Morgan","Barclays","Visa","American Express", "Snap Inc", "JPMorgan Chase & Co.", "Tata Consultancy Services", "Recruiting from Scratch", "Epic", and so on...
 location = []                      # (dynamic multiple select)
 industry = []                      # (dynamic multiple select)

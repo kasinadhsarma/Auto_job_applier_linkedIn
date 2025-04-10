@@ -11,11 +11,11 @@ from modules.platforms import DailyLimitError
 from config.settings import run_in_background, run_non_stop
 from config.search import search_terms, companies
 from config.secrets import (
-    use_AI, username, password,
+    use_AI, ai_provider,
+    username, password,
     indeed_username, indeed_password,
     glassdoor_username, glassdoor_password,
     dice_username, dice_password,
-    openai_api_key
 )
 
 from modules.open_chrome import driver, wait, actions
@@ -25,7 +25,17 @@ from modules.platforms.indeed import IndeedPlatform
 from modules.platforms.glassdoor import GlassdoorPlatform
 from modules.platforms.dice import DicePlatform
 from modules.ai.smart_apply import SmartApplicationManager
-from openai import OpenAI
+
+def init_ai_client():
+    """Initialize AI client based on configured provider"""
+    if not use_AI:
+        return None
+        
+    if ai_provider == "openai":
+        from openai import OpenAI
+        from config.secrets import openai_api_key
+        return OpenAI(api_key=openai_api_key)
+    return None  # Ollama doesn't need a client
 
 # Platform configurations with daily limits
 PLATFORMS = {
@@ -193,8 +203,8 @@ def main() -> None:
         smart_manager = None
         if use_AI:
             print_lg("Initializing AI-powered application manager...")
-            openai_client = OpenAI(api_key=openai_api_key)
-            smart_manager = SmartApplicationManager(openai_client)
+            ai_client = init_ai_client()
+            smart_manager = SmartApplicationManager(ai_client)
         
         total_stats = {}
         cycle = 1

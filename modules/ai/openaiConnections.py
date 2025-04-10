@@ -13,7 +13,14 @@ version:    24.12.29.12.30
 '''
 
 
-from config.secrets import *
+from config.secrets import (
+    llm_api_key, 
+    llm_api_url, 
+    llm_model,
+    llm_spec,
+    stream_output,
+    use_AI
+)
 from config.settings import showAiErrorAlerts
 from config.personals import ethnicity, gender, disability_status, veteran_status
 from config.questions import *
@@ -77,7 +84,7 @@ def ai_create_openai_client() -> OpenAI:
         if not use_AI:
             raise ValueError("AI is not enabled! Please enable it by setting `use_AI = True` in `secrets.py` in `config` folder.")
         
-        client = OpenAI(base_url=llm_api_url, api_key=llm_api_key)
+        client = OpenAI(base_url=llm_api_key, api_key=llm_api_key or "")
 
         models = ai_get_models_list(client)
         if "error" in models:
