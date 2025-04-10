@@ -29,17 +29,17 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, NoSuchWindowException, ElementNotInteractableException
 
-from config.personals import *
-from config.questions import *
-from config.search import *
-from config.secrets import use_AI, username, password
-from config.settings import *
+from app.config.personals import *
+from app.config.questions import *
+from app.config.search import *
+from app.config.secrets import use_AI, username, password
+from app.config.settings import *
 
-from modules.open_chrome import *
-from modules.helpers import *
-from modules.clickers_and_finders import *
-from modules.validator import validate_config
-from modules.ai.openaiConnections import *
+from app.modules.open_chrome import *
+from app.modules.helpers import *
+from app.modules.clickers_and_finders import *
+from app.modules.validator import validate_config
+from app.modules.ai.openaiConnections import *
 
 from typing import Literal
 

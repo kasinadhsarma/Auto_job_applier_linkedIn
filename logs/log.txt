@@ -1,0 +1,144 @@
+IF YOU HAVE MORE THAN 10 TABS OPENED, PLEASE CLOSE OR BOOKMARK THEM! Or it's highly likely that application will just open browser and not do anything!
+Default profile directory not found. Logging in with a guest profile, Web history will not be saved!
+Downloading Chrome Driver... This may take some time. Undetected mode requires download every run!
+IF YOU HAVE MORE THAN 10 TABS OPENED, PLEASE CLOSE OR BOOKMARK THEM! Or it's highly likely that application will just open browser and not do anything!
+Default profile directory not found. Logging in with a guest profile, Web history will not be saved!
+Downloading Chrome Driver... This may take some time. Undetected mode requires download every run!
+IF YOU HAVE MORE THAN 10 TABS OPENED, PLEASE CLOSE OR BOOKMARK THEM! Or it's highly likely that application will just open browser and not do anything!
+Default profile directory not found. Logging in with a guest profile, Web history will not be saved!
+Downloading Chrome Driver... This may take some time. Undetected mode requires download every run!
+IF YOU HAVE MORE THAN 10 TABS OPENED, PLEASE CLOSE OR BOOKMARK THEM! Or it's highly likely that application will just open browser and not do anything!
+Default profile directory not found. Logging in with a guest profile, Web history will not be saved!
+Downloading Chrome Driver... This may take some time. Undetected mode requires download every run!
+Seems like login attempt failed! Possibly due to wrong credentials or already logged in! Try logging in manually!
+Seems like you're not logged in!
+Creating OpenAI client...
+Getting AI models list...
+Error occurred while getting models list!
+Connection error.
+2025-04-10 12:16:31.668835
+Error occurred while creating OpenAI client. 
+
+1. Make sure your AI API connection details like url, key, model names, etc are correct.
+2. If you're using an local LLM, please check if the server is running.
+3. Check if appropriate LLM and Embedding models are loaded and running.
+
+Open `secret.py` in `/config` folder to configure your AI API connections.
+
+ERROR:
+
+Connection error.
+2025-04-10 12:16:33.621249
+
+########################################################################################################################
+
+Date and Time: 2025-04-10 12:16:33.637693
+Cycle number: 1
+Currently looking for jobs posted within 'Any time' and sorting them by ''
+
+________________________________________________________________________________________________________________________
+
+
+>>>> Now searching for "Software Engineer" <<<<
+
+
+Setting search location as: "India"
+Click Failed! Didn't find 'Any time'
+Failed to find Pagination element, hence couldn't scroll till end!
+Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(@class, 'active')]"}
+  (Session info: chrome=135.0.7049.84); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0x64e9c4039d0a <unknown>
+#1 0x64e9c3aea5f0 <unknown>
+#2 0x64e9c3b3ba33 <unknown>
+#3 0x64e9c3b3bc21 <unknown>
+#4 0x64e9c3b2f5c6 <unknown>
+#5 0x64e9c3b6168d <unknown>
+#6 0x64e9c3b2f4ba <unknown>
+#7 0x64e9c3b6182e <unknown>
+#8 0x64e9c3b87660 <unknown>
+#9 0x64e9c3b61433 <unknown>
+#10 0x64e9c3b2dea3 <unknown>
+#11 0x64e9c3b2eb01 <unknown>
+#12 0x64e9c3ffeb5b <unknown>
+#13 0x64e9c4002a41 <unknown>
+#14 0x64e9c3fe5c52 <unknown>
+#15 0x64e9c40035b4 <unknown>
+#16 0x64e9c3fc9f0f <unknown>
+#17 0x64e9c4027db8 <unknown>
+#18 0x64e9c4027f96 <unknown>
+#19 0x64e9c4038b56 <unknown>
+#20 0x73797a69caa4 <unknown>
+#21 0x73797a729c3c <unknown>
+
+Failed to find Job listings!
+In Applier
+Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: Unable to receive message from renderer
+  (Session info: chrome=135.0.7049.84)
+Stacktrace:
+#0 0x64e9c4039d0a <unknown>
+#1 0x64e9c3aea5f0 <unknown>
+#2 0x64e9c3ad1a80 <unknown>
+#3 0x64e9c3ad1782 <unknown>
+#4 0x64e9c3ad06b9 <unknown>
+#5 0x64e9c3af9109 <unknown>
+#6 0x64e9c3b69f49 <unknown>
+#7 0x64e9c3b86ffc <unknown>
+#8 0x64e9c3b61433 <unknown>
+#9 0x64e9c3b2dea3 <unknown>
+#10 0x64e9c3b2eb01 <unknown>
+#11 0x64e9c3ffeb5b <unknown>
+#12 0x64e9c4002a41 <unknown>
+#13 0x64e9c3fe5c52 <unknown>
+#14 0x64e9c40035b4 <unknown>
+#15 0x64e9c3fc9f0f <unknown>
+#16 0x64e9c4027db8 <unknown>
+#17 0x64e9c4027f96 <unknown>
+#18 0x64e9c4038b56 <unknown>
+#19 0x73797a69caa4 <unknown>
+#20 0x73797a729c3c <unknown>
+
+2025-04-10 12:17:02.438233
+In Applier Main
+Message: invalid session id
+Stacktrace:
+#0 0x64e9c4039d0a <unknown>
+#1 0x64e9c3aea443 <unknown>
+#2 0x64e9c3b2d04f <unknown>
+#3 0x64e9c3b61566 <unknown>
+#4 0x64e9c3b5beb7 <unknown>
+#5 0x64e9c3b5aff5 <unknown>
+#6 0x64e9c3ab37f8 <unknown>
+#7 0x64e9c3ffeb5b <unknown>
+#8 0x64e9c4002a41 <unknown>
+#9 0x64e9c3fe5c52 <unknown>
+#10 0x64e9c40035b4 <unknown>
+#11 0x64e9c3fc9f0f <unknown>
+#12 0x64e9c3ab1571 <unknown>
+#13 0x73797a62a1ca <unknown>
+#14 0x73797a62a28b __libc_start_main
+#15 0x64e9c3a79e6a _start
+
+2025-04-10 12:17:02.452027
+
+
+Total runs:                     1
+Jobs Easy Applied:              0
+External job links collected:   0
+                              ----------
+Total applied or collected:     0
+
+Failed jobs:                    0
+Irrelevant jobs skipped:        0
+
+
+All the best with your future interviews.
+
+
+Best regards,
+Sai Vignesh Golla
+https://www.linkedin.com/in/saivigneshgolla/
+
+
+Closing the browser...

@@ -1,13 +1,97 @@
-__pycache__
-.vscode
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-all excels
-all resumes
-logs
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
 
-old
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
-secrets.py
+# Application Specific
+config/settings.py
+config/search.py
 config/personals.py
-.venv
-apikeys.py
+config/secrets.py
+
+# Application Data
+data/logs/
+data/history/
+data/resumes/
+!data/resumes/.gitkeep
+
+# Screenshots and Debug
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.log
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Browser Profile Data
+*.profile
+
+# Database
+*.db
+*.sqlite3
+
+# Certificate and Key Files
+*.pem
+*.key
+*.crt
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Runtime Data
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage Reports
+.coverage
+coverage/
+htmlcov/
+
+# Unit Test Reports
+test-reports/
+.pytest_cache/
+.all_excels/
+.csv
+all excels/all_applied_applications_history.csv
+all excels/all_failed_applications_history.csv
