@@ -28,22 +28,49 @@ def wait_span_click(driver: WebDriver, text: str, time: float=5.0, click: bool=T
     Finds the span element with the given `text`.
     - Returns `WebElement` if found, else `False` if not found.
     - Clicks on it if `click = True`.
-    - Will spend a max of `time` seconds in searching for each element.
-    - Will scroll to the element if `scroll = True`.
+    - Will spend a max of `time` seconds searching for each element.
+    - Will scroll to the element if `scroll = True`. 
     - Will scroll to the top if `scrollTop = True`.
     '''
-    if text:
-        try:
-            button = WebDriverWait(driver,time).until(EC.presence_of_element_located((By.XPATH, './/span[normalize-space(.)="'+text+'"]')))
-            if scroll:  scroll_to_view(driver, button, scrollTop)
-            if click:
+    if not text:
+        return False
+        
+    try:
+        # First wait for presence
+        button = WebDriverWait(driver, time).until(
+            EC.presence_of_element_located((By.XPATH, './/span[normalize-space(.)="'+text+'"]'))
+        )
+        
+        if scroll:
+            # Scroll twice - first to rough position, then fine tune
+            scroll_to_view(driver, button, scrollTop)
+            sleep(0.5)
+            scroll_to_view(driver, button, scrollTop)
+            
+        if click:
+            try:
+                # Wait for element to be clickable
+                button = WebDriverWait(driver, time).until(
+                    EC.element_to_be_clickable((By.XPATH, './/span[normalize-space(.)="'+text+'"]'))
+                )
                 button.click()
-                buffer(click_gap)
-            return button
-        except Exception as e:
-            print_lg("Click Failed! Didn't find '"+text+"'")
-            # print_lg(e)
-            return False
+            except Exception:
+                # Try alternate click methods if normal click fails
+                try:
+                    actions = ActionChains(driver)
+                    actions.move_to_element(button).click().perform()
+                except:
+                    # Last resort - use JavaScript click
+                    driver.execute_script("arguments[0].click();", button)
+            
+            buffer(click_gap)
+            
+        return button
+        
+    except Exception as e:
+        print_lg(f"Click Failed! Didn't find '{text}'")
+        # print_lg(e) # Uncomment for debugging
+        return False
 
 def multi_sel(driver: WebDriver, texts: list, time: float=5.0) -> None:
     '''
@@ -124,13 +151,40 @@ def text_input_by_ID(driver: WebDriver, id: str, value: str, time: float=5.0) ->
     username_field.send_keys(value)
 
 def try_xp(driver: WebDriver, xpath: str, click: bool=True) -> WebElement | bool:
+    '''
+    Tries to find and optionally click an element by XPath.
+    Returns the element if found (and click=False), True if clicked successfully, 
+    or False if not found/click failed.
+    '''
     try:
+        # First wait for presence 
+        element = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, xpath))
+        )
+        
         if click:
-            driver.find_element(By.XPATH, xpath).click()
-            return True
-        else:
-            return driver.find_element(By.XPATH, xpath)
-    except: return False
+            try:
+                # Wait for clickable
+                element = WebDriverWait(driver, 3).until(
+                    EC.element_to_be_clickable((By.XPATH, xpath))
+                )
+                element.click()
+                return True
+            except:
+                # Try alternate click methods
+                try:
+                    actions = ActionChains(driver)
+                    actions.move_to_element(element).click().perform()
+                    return True
+                except:
+                    try:
+                        driver.execute_script("arguments[0].click();", element)
+                        return True
+                    except:
+                        return False
+        return element
+    except:
+        return False
 
 def try_linkText(driver: WebDriver, linkText: str) -> WebElement | bool:
     try:    return driver.find_element(By.LINK_TEXT, linkText)
@@ -156,12 +210,42 @@ def company_search_click(driver: WebDriver, actions: ActionChains, companyName: 
     print_lg(f'Tried searching and adding "{companyName}"')
 
 def text_input(actions: ActionChains, textInputEle: WebElement | bool, value: str, textFieldName: str = "Text") -> None | Exception:
-    if textInputEle:
-        sleep(1)
-        # actions.key_down(Keys.CONTROL).send_keys("a").key_up(Keys.CONTROL).perform()
-        textInputEle.clear()
-        textInputEle.send_keys(value.strip())
-        sleep(2)
-        actions.send_keys(Keys.ENTER).perform()
-    else:
+    '''
+    Enters text into input field with improved reliability
+    '''
+    if not textInputEle:
         print_lg(f'{textFieldName} input was not given!')
+        return
+
+    try:
+        # Wait for element to be ready
+        sleep(0.5)
+        
+        # Clear in multiple ways to ensure field is empty
+        try:
+            textInputEle.send_keys(Keys.CONTROL + "a")
+            textInputEle.send_keys(Keys.DELETE)
+        except:
+            try:
+                textInputEle.clear() 
+            except:
+                pass
+                
+        # Send keys slowly to avoid missing characters
+        for char in value.strip():
+            textInputEle.send_keys(char)
+            sleep(0.05)
+            
+        # Wait before hitting enter    
+        sleep(0.5)
+        
+        try:
+            textInputEle.send_keys(Keys.ENTER)
+        except:
+            actions.send_keys(Keys.ENTER).perform()
+            
+        sleep(0.5)
+        
+    except Exception as e:
+        print_lg(f"Failed to enter text in {textFieldName}: {str(e)}")
+        raise e

@@ -127,43 +127,58 @@ def calculate_date_posted(time_string: str) -> datetime | None | ValueError:
     Function to calculate date posted from string.
     Returns datetime object | None if unable to calculate | ValueError if time_string is invalid
     Valid time string examples:
-    * 10 seconds ago
-    * 15 minutes ago
-    * 2 hours ago
-    * 1 hour ago
-    * 1 day ago
-    * 10 days ago
-    * 1 week ago
-    * 1 month ago
-    * 1 year ago
+    * Location, State, Country · 10 seconds ago
+    * Location · 15 minutes ago
+    * Location · 2 hours ago · Extra info
+    * Location · 1 day ago
+    * Location · 10 days ago
+    * Location · 1 week ago · Extra info
+    * Location · 1 month ago
+    * Location · 1 year ago
     '''
-    time_string = time_string.strip()
-    # print_lg(f"Trying to calculate date job was posted from '{time_string}'")
-    now = datetime.now()
-    if "second" in time_string:
-        seconds = int(time_string.split()[0])
-        date_posted = now - timedelta(seconds=seconds)
-    elif "minute" in time_string:
-        minutes = int(time_string.split()[0])
-        date_posted = now - timedelta(minutes=minutes)
-    elif "hour" in time_string:
-        hours = int(time_string.split()[0])
-        date_posted = now - timedelta(hours=hours)
-    elif "day" in time_string:
-        days = int(time_string.split()[0])
-        date_posted = now - timedelta(days=days)
-    elif "week" in time_string:
-        weeks = int(time_string.split()[0])
-        date_posted = now - timedelta(weeks=weeks)
-    elif "month" in time_string:
-        months = int(time_string.split()[0])
-        date_posted = now - timedelta(days=months * 30)
-    elif "year" in time_string:
-        years = int(time_string.split()[0])
-        date_posted = now - timedelta(days=years * 365)
-    else:
-        date_posted = None
-    return date_posted
+    # Extract the time part after location
+    parts = time_string.split(' · ')
+    if len(parts) < 2:
+        return None
+        
+    # Find the part that contains "ago"
+    time_part = None
+    for part in parts:
+        if 'ago' in part:
+            time_part = part.strip()
+            break
+            
+    if not time_part:
+        return None
+        
+    # Extract number and unit
+    time_parts = time_part.split()
+    if len(time_parts) < 3:  # Need at least [number, unit, "ago"]
+        return None
+        
+    try:
+        value = int(time_parts[0])
+        unit = time_parts[1].lower()
+        now = datetime.now()
+        
+        if "second" in unit:
+            return now - timedelta(seconds=value)
+        elif "minute" in unit:
+            return now - timedelta(minutes=value)
+        elif "hour" in unit:
+            return now - timedelta(hours=value)
+        elif "day" in unit:
+            return now - timedelta(days=value)
+        elif "week" in unit:
+            return now - timedelta(weeks=value)
+        elif "month" in unit:
+            return now - timedelta(days=value * 30)
+        elif "year" in unit:
+            return now - timedelta(days=value * 365)
+    except (ValueError, IndexError):
+        return None
+    
+    return None
     
 
 def convert_to_lakhs(value: str) -> str:

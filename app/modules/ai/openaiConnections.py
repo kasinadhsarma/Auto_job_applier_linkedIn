@@ -84,15 +84,30 @@ def ai_create_openai_client() -> OpenAI:
         if not use_AI:
             raise ValueError("AI is not enabled! Please enable it by setting `use_AI = True` in `secrets.py` in `config` folder.")
         
-        client = OpenAI(base_url=llm_api_key, api_key=llm_api_key or "")
-
-        models = ai_get_models_list(client)
-        if "error" in models:
-            raise ValueError(models[1])
-        if len(models) == 0:
-            raise ValueError("No models are available!")
-        if llm_model not in [model.id for model in models]:
-            raise ValueError(f"Model `{llm_model}` is not found!")
+        if not llm_api_key:
+            raise ValueError("API key is not configured! Please set llm_api_key in secrets.py")
+            
+        if not llm_api_url:
+            raise ValueError("API URL is not configured! Please set llm_api_url in secrets.py")
+            
+        client = OpenAI(
+            base_url=llm_api_url,
+            api_key=llm_api_key,
+            timeout=30.0, # Add timeout
+            max_retries=3 # Add retries
+        )
+        
+        # Test connection by trying to list models
+        try:
+            models = ai_get_models_list(client)
+            if isinstance(models, list) and len(models) >= 2 and "error" in models:
+                raise ValueError(str(models[1]))
+            if not models or len(models) == 0:
+                raise ValueError("No models are available!")
+            if llm_model not in [model.id for model in models]:
+                raise ValueError(f"Model `{llm_model}` is not found!")
+        except Exception as e:
+            raise ValueError(f"Failed to connect to API: {str(e)}")
         
         print_lg("---- SUCCESSFULLY CREATED OPENAI CLIENT! ----")
         print_lg(f"Using API URL: {llm_api_url}")
